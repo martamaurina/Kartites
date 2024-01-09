@@ -14,26 +14,28 @@ answer_dict={}
 
 def btnClick(btn,number):
     global count, correctAnswers, answers, answer_dict
-    if btn['image']=='pyimage1'and count<2:
+    if btn['image']=='pyimage6'and count<2:
         btn['image']=ImageList[number]
         count+=1
         answers.append(number)
         answer_dict[btn]=ImageList[number]
-    if len(answers)==2:
+    if len(answers)==2: #Ja atverās divas kartītes
         if ImageList[answers[0]]==ImageList[answers[1]]:
             for key in answer_dict:
-                key['state']=DISABLED
-            if correctAnswers==2:
+                key["state"]=DISABLED
+            correctAnswers+=2
+            if correctAnswers==2: 
                 messagebox.showinfo("Matching images", "You've guessed correctly")
+                correctAnswers=0
             else:
                 messagebox.showinfo("No matching images","You've guessed incorrectly")
                 for key in answer_dict:
-                    key['image']="pyimage6"
-                count=0
-                answers=[]
-                answer_dict={}
+                     key['image']="pyimage1"
+    count=0
+    answers=[]
+    answer_dict={}
 
-                return 0
+    return 0
 
 btn0=Button(width=150, height=250, image=bgImg, command=lambda:btnClick(btn0,0))
 btn1=Button(width=150, height=250, image=bgImg, command=lambda:btnClick(btn1,1))
