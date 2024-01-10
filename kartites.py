@@ -5,7 +5,7 @@ from tkinter import messagebox
 gameWindow=Tk()
 gameWindow.title("Matching game")
 
-bgImg=ImageTk.PhotoImage(Image.open('a.jpg').resize((150,250)))
+bgImg=ImageTk.PhotoImage(Image.open('7.jpg').resize((150,250)))
 
 count=0
 correctAnswers=0
@@ -14,7 +14,7 @@ answer_dict={}
 
 def btnClick(btn,number):
     global count, correctAnswers, answers, answer_dict
-    if btn['image']=='pyimage6'and count<2:
+    if btn['image']=='pyimage1'and count<2:
         btn['image']=ImageList[number]
         count+=1
         answers.append(number)
@@ -27,13 +27,13 @@ def btnClick(btn,number):
             if correctAnswers==2: 
                 messagebox.showinfo("Matching images", "You've guessed correctly")
                 correctAnswers=0
-            else:
-                messagebox.showinfo("No matching images","You've guessed incorrectly")
-                for key in answer_dict:
-                     key['image']="pyimage1"
-    count=0
-    answers=[]
-    answer_dict={}
+        else:
+            messagebox.showinfo("No matching images","You've guessed incorrectly")
+            for key in answer_dict:
+                key['image']="pyimage1"
+        count=0
+        answers=[]
+        answer_dict={}
 
     return 0
 
@@ -66,12 +66,12 @@ btn10.grid(row = 2, column = 2)
 btn11.grid(row = 2, column = 3)
 
 
-myImg1=ImageTk.PhotoImage(Image.open("1.png").resize((150,150)))
-myImg2=ImageTk.PhotoImage(Image.open("2.webp").resize((130,130)))
-myImg3=ImageTk.PhotoImage(Image.open("3.webp").resize((140,140)))
-myImg4=ImageTk.PhotoImage(Image.open("4.webp").resize((150,150)))
-myImg5=ImageTk.PhotoImage(Image.open("5.png").resize((170,170)))
-myImg6=ImageTk.PhotoImage(Image.open("6.webp").resize((190,190)))
+myImg1=ImageTk.PhotoImage(Image.open("1.jpg").resize((150,150)))
+myImg2=ImageTk.PhotoImage(Image.open("2.jpg").resize((130,130)))
+myImg3=ImageTk.PhotoImage(Image.open("3.jpg").resize((140,140)))
+myImg4=ImageTk.PhotoImage(Image.open("4.jpg").resize((150,150)))
+myImg5=ImageTk.PhotoImage(Image.open("5.jpg").resize((170,170)))
+myImg6=ImageTk.PhotoImage(Image.open("6.jpg").resize((190,190)))
 
 
 ImageList=[myImg1,myImg1,myImg2,myImg2,myImg3,myImg3,myImg4,myImg4,myImg5,myImg5,myImg6,myImg6]
