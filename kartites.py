@@ -65,7 +65,7 @@ def infoLogs():
     return 0
 
 def reset():
-    global count, correctAnswers, answers
+    global count, correctAnswers, answers, answer_dict
     btn0.config(state=NORMAL)
     btn1.config(state=NORMAL)
     btn2.config(state=NORMAL)
