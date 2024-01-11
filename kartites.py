@@ -2,8 +2,8 @@ from tkinter import*
 from PIL import ImageTk, Image
 import random
 from tkinter import messagebox
-gameWindow=Tk()
-gameWindow.title("Matching game")
+MansLogs=Tk()
+MansLogs.title("Matching game")
 
 bgImg=ImageTk.PhotoImage(Image.open('7.jpg').resize((150,250)))
 
@@ -36,6 +36,63 @@ def btnClick(btn,number):
         answer_dict={}
 
     return 0
+
+def infoLogs():
+    newLogs=Toplevel()
+    newLogs.title('Info par programmu')
+    newLogs.geometry("665x240")
+    desc=Label(newLogs, text='')
+    desc.grid(row=0, column=0)
+    desc=Label(newLogs, text=' SPĒLES NOTEIKUMI',bg = "#FAE7CC", font=('Helvica 10 bold') )
+    desc.grid(row=1, column=0)
+    desc=Label(newLogs, text='')
+    desc.grid(row=2, column=0)
+    desc=Label(newLogs, text=' Spēles sākumā visas kārtis tiek sajauktas un izliktas kolonnās un rindās ar seju uz leju.')
+    desc.grid(row=3, column=0)
+    desc=Label(newLogs, text=' Spēlētājs sāk spēli un apgriež divas kārtis. Gadījumā, ja kārtis nesakrīt, tas nav pāris, tāpēc viņas tiek apgrieztas atpakaļ.')
+    desc.grid(row=4, column=0)
+    desc=Label(newLogs, text=' Spēle visu laiku atkārtojās, kamēr spēlētājs uzmin divas kārtis vai atcerās kāršu novietojumu un apgriež abas identiskās kārtis.')
+    desc.grid(row=5, column=0)
+    desc=Label(newLogs, text=' Abas kārtis sakrīt, tas ir pāris! Abas kārtis ir atrastas un tās vairs nevar apgriest.')
+    desc.grid(row=6, column=0)
+    desc=Label(newLogs, text=' Spēli var turpināt tālāk, kamēr visi kāršu pāri ir atrasti.')
+    desc.grid(row=7, column=0)
+    desc=Label(newLogs, text=' ')
+    desc.grid(row=8, column=0)
+    desc=Label(newLogs, text=' Opcijās ir iespēja spēli aizvērt vai sākt spēli pa jaunam.',bg = "#FAE7CC")
+    desc.grid(row=9, column=0)
+    
+    return 0
+
+def reset():
+    global count, correctAnswers, answers
+    btn0.config(state=NORMAL)
+    btn1.config(state=NORMAL)
+    btn2.config(state=NORMAL)
+    btn3.config(state=NORMAL)
+    btn4.config(state=NORMAL)
+    btn5.config(state=NORMAL)
+    btn6.config(state=NORMAL)
+    btn7.config(state=NORMAL)
+    btn8.config(state=NORMAL)
+    btn9.config(state=NORMAL)
+    btn10.config(state=NORMAL)
+    btn11.config(state=NORMAL)
+    btn0['image']='pyimage1'
+    btn1['image']='pyimage1'
+    btn2['image']='pyimage1'
+    btn3['image']='pyimage1'
+    btn4['image']='pyimage1'
+    btn5['image']='pyimage1'
+    btn6['image']='pyimage1'
+    btn7['image']='pyimage1'
+    btn8['image']='pyimage1'
+    btn9['image']='pyimage1'
+    btn10['image']='pyimage1'
+    btn11['image']='pyimage1'
+    return 0
+
+
 
 btn0=Button(width=150, height=250, image=bgImg, command=lambda:btnClick(btn0,0))
 btn1=Button(width=150, height=250, image=bgImg, command=lambda:btnClick(btn1,1))
@@ -77,4 +134,16 @@ myImg6=ImageTk.PhotoImage(Image.open("6.jpg").resize((190,190)))
 ImageList=[myImg1,myImg1,myImg2,myImg2,myImg3,myImg3,myImg4,myImg4,myImg5,myImg5,myImg6,myImg6]
 random.shuffle(ImageList)
 
-gameWindow.mainloop()
+
+galvenaIzvelne=Menu(MansLogs)#izveido galveno izvelni
+MansLogs.config(menu=galvenaIzvelne)#pievieno gara...
+
+opcijas=Menu(galvenaIzvelne, tearoff=False)#maza izvēlne
+galvenaIzvelne.add_cascade(label="Opcijas", menu=opcijas)#lejupkritošais  saraksts
+
+opcijas.add_command(label="Jauna spēle", command=reset)
+opcijas.add_command(label="Iziet", command=MansLogs.quit)
+galvenaIzvelne.add_command(label="Par programmu", command=infoLogs)
+
+
+MansLogs.mainloop()
