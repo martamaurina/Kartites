@@ -1,18 +1,19 @@
-from tkinter import*
-from PIL import ImageTk, Image
-import random
+from tkinter import* #savādāk nevar izveidot rāmi
+from PIL import ImageTk, Image #nodrošina attēlu ievietošanu
+import random #sajauc bildes
 from tkinter import messagebox
 MansLogs=Tk()
 MansLogs.title("Matching game")
 
-bgImg=ImageTk.PhotoImage(Image.open('7.jpg').resize((150,250)))
+bgImg=ImageTk.PhotoImage(Image.open('7.jpg').resize((150,250))) #fona attēls
 
 count=0
 correctAnswers=0
-answers=[]
-answer_dict={}
+answers=[] #masīvs
+answer_dict={} #vārdnīca
+answerCount=0
 
-def btnClick(btn,number):
+def btnClick(btn,number): #šī funkcija tiek pielikta klāt pogām
     global count, correctAnswers, answers, answer_dict
     if btn['image']=='pyimage1'and count<2:
         btn['image']=ImageList[number]
@@ -34,16 +35,18 @@ def btnClick(btn,number):
         count=0
         answers=[]
         answer_dict={}
-
+    #if answerCount==6: #1
+        #messagebox.showinfo("Wow","You win!")
+    #reset()
     return 0
 
-def infoLogs():
+def infoLogs(): #izvēles logs
     newLogs=Toplevel()
-    newLogs.title('Info par programmu')
-    newLogs.geometry("665x240")
+    newLogs.title('Info par programmu') #loga nosaukums
+    newLogs.geometry("665x240") #loga imērs
     desc=Label(newLogs, text='')
-    desc.grid(row=0, column=0)
-    desc=Label(newLogs, text=' SPĒLES NOTEIKUMI',bg = "#FAE7CC", font=('Helvica 10 bold') )
+    desc.grid(row=0, column=0) #atrašanās vieta
+    desc=Label(newLogs, text=' SPĒLES NOTEIKUMI',bg = "#FAE7CC", font=('Helvica 10 bold') ) #Teksts
     desc.grid(row=1, column=0)
     desc=Label(newLogs, text='')
     desc.grid(row=2, column=0)
@@ -64,9 +67,9 @@ def infoLogs():
     
     return 0
 
-def reset():
+def reset(): #spēli atsāk no sākuma
     global count, correctAnswers, answers, answer_dict
-    btn0.config(state=NORMAL)
+    btn0.config(state=NORMAL) #pogu stāvoklis, kad ir gatavs darbam
     btn1.config(state=NORMAL)
     btn2.config(state=NORMAL)
     btn3.config(state=NORMAL)
@@ -78,7 +81,7 @@ def reset():
     btn9.config(state=NORMAL)
     btn10.config(state=NORMAL)
     btn11.config(state=NORMAL)
-    btn0['image']='pyimage1'
+    btn0['image']='pyimage1' # visām bildēm priekšā ir fona attēls
     btn1['image']='pyimage1'
     btn2['image']='pyimage1'
     btn3['image']='pyimage1'
@@ -109,7 +112,7 @@ btn11=Button(width=150, height=250, image=bgImg, command=lambda:btnClick(btn11,1
 
 
 
-btn0.grid(row = 0, column = 0)
+btn0.grid(row = 0, column = 0) #pogu atrašanās vieta
 btn1.grid(row = 0, column = 1)
 btn2.grid(row = 0, column = 2)
 btn3.grid(row = 0, column = 3)
@@ -136,7 +139,7 @@ random.shuffle(ImageList)
 
 
 galvenaIzvelne=Menu(MansLogs)#izveido galveno izvelni
-MansLogs.config(menu=galvenaIzvelne)#pievieno gara...
+MansLogs.config(menu=galvenaIzvelne)
 
 opcijas=Menu(galvenaIzvelne, tearoff=False)#maza izvēlne
 galvenaIzvelne.add_cascade(label="Opcijas", menu=opcijas)#lejupkritošais  saraksts
