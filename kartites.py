@@ -28,6 +28,7 @@ def btnClick(btn,number): #šī funkcija tiek pielikta klāt pogām
             if correctAnswers==2: 
                 messagebox.showinfo("Matching images", "You've guessed correctly")
                 correctAnswers=0
+                #answerCount+=1
         else:
             messagebox.showinfo("No matching images","You've guessed incorrectly")
             for key in answer_dict:
