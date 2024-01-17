@@ -8,13 +8,14 @@ MansLogs.title("Matching game")
 bgImg=ImageTk.PhotoImage(Image.open('7.jpg').resize((150,250))) #fona attēls
 
 count=0
+answerCount=0
 correctAnswers=0
 answers=[] #masīvs
 answer_dict={} #vārdnīca
-answerCount=0
+
 
 def btnClick(btn,number): #šī funkcija tiek pielikta klāt pogām
-    global count, correctAnswers, answers, answer_dict
+    global count, correctAnswers, answers, answer_dict, answerCount
     if btn['image']=='pyimage1'and count<2:
         btn['image']=ImageList[number]
         count+=1
@@ -25,10 +26,11 @@ def btnClick(btn,number): #šī funkcija tiek pielikta klāt pogām
             for key in answer_dict:
                 key["state"]=DISABLED
             correctAnswers+=2
+
             if correctAnswers==2: 
                 messagebox.showinfo("Matching images", "You've guessed correctly")
                 correctAnswers=0
-                #answerCount+=1
+                answerCount+=1
         else:
             messagebox.showinfo("No matching images","You've guessed incorrectly")
             for key in answer_dict:
@@ -36,9 +38,9 @@ def btnClick(btn,number): #šī funkcija tiek pielikta klāt pogām
         count=0
         answers=[]
         answer_dict={}
-    #if answerCount==6: #1
-        #messagebox.showinfo("Wow","You win!")
-    #reset()
+    if answerCount==6: #1
+        messagebox.showinfo("Found all images","Congratulations, you won!")
+    
     return 0
 
 def infoLogs(): #izvēles logs
@@ -69,7 +71,7 @@ def infoLogs(): #izvēles logs
     return 0
 
 def reset(): #spēli atsāk no sākuma
-    global count, correctAnswers, answers, answer_dict
+    global count, correctAnswers, answers, answer_dict, answerCount
     btn0.config(state=NORMAL) #pogu stāvoklis, kad ir gatavs darbam
     btn1.config(state=NORMAL)
     btn2.config(state=NORMAL)
