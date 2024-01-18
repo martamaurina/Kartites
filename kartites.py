@@ -38,7 +38,7 @@ def btnClick(btn,number): #šī funkcija tiek pielikta klāt pogām
         count=0
         answers=[]
         answer_dict={}
-    if answerCount==6: #1
+    if answerCount==6: 
         messagebox.showinfo("Found all images","Congratulations, you won!")
     
     return 0
