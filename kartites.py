@@ -96,6 +96,11 @@ def reset(): #spēli atsāk no sākuma
     btn9['image']='pyimage1'
     btn10['image']='pyimage1'
     btn11['image']='pyimage1'
+    count=0
+    answerCount=0
+    correctAnswers=0
+    answers=[] #masīvs
+    answer_dict={} 
     return 0
 
 
